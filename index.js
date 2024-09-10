@@ -1,6 +1,7 @@
 import { connection, authenticate } from "./config/database.js";
 import express from "express";
 import cors from "cors"
+import { ninjasRouter } from "./routes/ninjas.js";
 
 authenticate(connection).then(() => {
   connection.sync()
@@ -9,7 +10,10 @@ authenticate(connection).then(() => {
 const app = express()
 
 app.use(express.json())
-app.use(cors())
+app.use(cors({ origin: "http://localhost:5173"}))
+
+// endpoints
+app.use(ninjasRouter)
 
 app.get("/hello", (req, res) => {
   res.json("e ai cacete")
