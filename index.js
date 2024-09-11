@@ -5,6 +5,7 @@ import { ninjasRouter } from "./routes/ninjas.js";
 
 authenticate(connection).then(() => {
   connection.sync()
+  
 })
 
 const app = express()
@@ -14,10 +15,6 @@ app.use(cors({ origin: "http://localhost:5173"}))
 
 // endpoints
 app.use(ninjasRouter)
-
-app.get("/hello", (req, res) => {
-  res.json("e ai cacete")
-})
 
 app.listen(3000, () => {
   console.log("servidor rodando em http://localhost:3000/")
