@@ -29,5 +29,5 @@ export const Ninja = connection.define("ninja", {
   }
 })
 
-Ninja.hasMany(Missao)
+Ninja.hasMany(Missao, { onDelete: "CASCADE" })
 Missao.belongsTo(Ninja)

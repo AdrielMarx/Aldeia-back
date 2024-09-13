@@ -62,3 +62,20 @@ missoesRouter.delete("/missoes/:id", async (req, res) => {
   }
 })
 
+missoesRouter.put("/missoes/:id", async (req, res) => {
+  const { titulo, rank, aldeia, dataExecucao, desc } = req.body
+
+  try {
+    const missao = await Missao.findByPk(req.params.id)
+    if (missao) {
+      await missao.update({ titulo, rank, aldeia, dataExecucao, desc })
+      res.json({ message: "Missão atualizada com sucesso." })
+    }
+    else {
+      res.status(404).json({ message: "Missão não encontrada" })
+    }
+  }
+  catch(err) {
+    res.status(500).json({ message: "Erro ao atualizar missão" })
+  }
+})
