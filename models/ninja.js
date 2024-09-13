@@ -7,6 +7,10 @@ export const Ninja = connection.define("ninja", {
     type: DataTypes.STRING(130),
     allowNull: false
   },
+  rank: {
+    type: DataTypes.STRING(130),
+    allowNull: false
+  },
   aldeia: {
     type: DataTypes.STRING(130),
     allowNull: false
