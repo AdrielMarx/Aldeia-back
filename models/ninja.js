@@ -1,5 +1,6 @@
 import { connection } from "../config/database.js";
 import { DataTypes } from "sequelize";
+import { Missao } from "./missao.js";
 
 export const Ninja = connection.define("ninja", {
   nome: {
@@ -23,3 +24,6 @@ export const Ninja = connection.define("ninja", {
     allowNull: false
   }
 })
+
+Ninja.hasMany(Missao)
+Missao.belongsTo(Ninja)
