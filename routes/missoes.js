@@ -41,7 +41,24 @@ missoesRouter.get("/missoes/:id", async (req, res) => {
     res.json(missao)
   }
   else {
-    res.status(404).json({ message: "Missão não encontrada" })
+    res.status(404).json({ message: "Missão não encontrada." })
+  }
+})
+
+missoesRouter.delete("/missoes/:id", async (req, res) => {
+  const idMissao = req.params.id
+  try {
+    const missao = await Missao.findOne({ where: { id: idMissao } })
+    if (missao) {
+      await missao.destroy()
+      res.json({ message: "Missão deletada." })
+    }
+    else {
+      res.json({ message: "Missão não encontrada." })
+    }
+  }
+  catch(err) {
+    res.status(500).json({ message: "Erro ao excluir missão" })
   }
 })
 
