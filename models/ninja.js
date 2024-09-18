@@ -25,7 +25,7 @@ export const Ninja = connection.define("ninja", {
   },
   imgURL: {
     type: DataTypes.STRING(500),
-    allowNull: false
+    allowNull: true
   }
 })
 
