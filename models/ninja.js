@@ -15,10 +15,6 @@ export const Ninja = connection.define("ninja", {
     type: DataTypes.STRING(130),
     allowNull: false
   },
-  idade: {
-    type: DataTypes.INTEGER(3),
-    allowNull: false
-  },
   elemento: {
     type: DataTypes.STRING(130),
     allowNull: false

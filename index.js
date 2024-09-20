@@ -6,7 +6,6 @@ import { missoesRouter } from "./routes/missoes.js";
 
 authenticate(connection).then(() => {
   connection.sync()
-  
 })
 
 const app = express()

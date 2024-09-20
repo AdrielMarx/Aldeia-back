@@ -10,11 +10,11 @@ import { Ninja } from "../models/ninja.js";
 export const ninjasRouter = Router()
 
 ninjasRouter.post("/ninjas", async (req, res) => {
-  const { nome, rank, aldeia, idade, elemento, imgURL } = req.body
+  const { nome, rank, aldeia, elemento, imgURL } = req.body
 
   try {
     await Ninja.create(
-       {nome, rank, aldeia, idade, elemento, imgURL},
+       {nome, rank, aldeia, elemento, imgURL},
        res.json({ message: "Ninja inserido com sucesso" })
     )
   } catch (err) {
@@ -63,12 +63,12 @@ ninjasRouter.delete("/ninjas/:id", async (req, res) => {
 })
 
 ninjasRouter.put("/ninjas/:id", async (req, res) => {
-  const { nome, rank, aldeia, idade, elemento, imgURL } = req.body
+  const { nome, rank, aldeia, elemento, imgURL } = req.body
 
   try {
     const ninja = await Ninja.findByPk(req.params.id)
     if(ninja) {
-      await ninja.update({ nome, rank, aldeia, idade, elemento, imgURL })
+      await ninja.update({ nome, rank, aldeia, elemento, imgURL })
       res.json({ message: "Ninja atualizado com sucesso." })
     }
     else {
