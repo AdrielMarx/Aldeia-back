@@ -21,7 +21,8 @@ export const Ninja = connection.define("ninja", {
   },
   imgURL: {
     type: DataTypes.STRING(500),
-    allowNull: true
+    allowNull: true,
+    defaultValue: "https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA1L2pvYjk2My1iLTAxNl8zLWxodHk4Mmg2LmpwZw.jpg"
   }
 })
 
