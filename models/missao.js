@@ -6,12 +6,8 @@ export const Missao = connection.define("missao", {
     type: DataTypes.STRING(50),
     allowNull: false
   },
-  rank: {
+  nivel: {
     type: DataTypes.STRING(1),
-    allowNull: false
-  },
-  aldeia: {
-    type: DataTypes.STRING(130),
     allowNull: false
   },
   dataExecucao: {
