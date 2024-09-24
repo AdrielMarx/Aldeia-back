@@ -13,12 +13,12 @@ missoesRouter.get("/missoes", async (req, res) => {
 })
 
 missoesRouter.post("/missoes", async (req, res) => {
-  const { ninjaId, titulo, rank, aldeia, dataExecucao, desc } = req.body
+  const { ninjaId, titulo, nivel, dataExecucao, desc } = req.body
 
   try {
     const ninja = await Ninja.findByPk(ninjaId)
     if (ninja) {
-      await Missao.create({ titulo, rank, aldeia, dataExecucao, desc, ninjaId })
+      await Missao.create({ titulo, nivel,  dataExecucao, desc, ninjaId })
       res.json({ message: "Missão criada." })
     }
     else {
@@ -63,12 +63,12 @@ missoesRouter.delete("/missoes/:id", async (req, res) => {
 })
 
 missoesRouter.put("/missoes/:id", async (req, res) => {
-  const { titulo, rank, aldeia, dataExecucao, desc } = req.body
+  const { titulo, nivel,  dataExecucao, desc } = req.body
 
   try {
     const missao = await Missao.findByPk(req.params.id)
     if (missao) {
-      await missao.update({ titulo, rank, aldeia, dataExecucao, desc })
+      await missao.update({ titulo, nivel, dataExecucao, desc })
       res.json({ message: "Missão atualizada com sucesso." })
     }
     else {
