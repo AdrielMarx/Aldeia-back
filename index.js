@@ -18,6 +18,4 @@ app.use(cors())
 app.use(ninjasRouter)
 app.use(missoesRouter)
 
-app.listen(3000, () => {
-  console.log("servidor rodando em http://localhost:3000/")
-})
+app.listen(3000)
