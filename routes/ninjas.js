@@ -24,13 +24,23 @@ ninjasRouter.post("/ninjas", async (req, res) => {
 })
 
 ninjasRouter.get("/ninjas", async (req, res) => {
+  const userId = req.query.userId 
 
-  const { userId } = req.query
-  const listaNinjas = await Ninja.findAll({
-    where: { userId }
-  });
-  res.json(listaNinjas)
+  if (!userId) {
+    return res.status(400).json({ error: "userId é necessário." })
+  }
+
+  try {
+    const listaNinjas = await Ninja.findAll({
+      where: { userId }
+    })
+    res.json(listaNinjas)
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({ error: "Erro ao buscar ninjas." })
+  }
 })
+
 
 ninjasRouter.get("/ninjas/:id", async (req, res) => {
   const ninja = await Ninja.findOne({
