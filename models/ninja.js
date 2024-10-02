@@ -23,6 +23,10 @@ export const Ninja = connection.define("ninja", {
     type: DataTypes.STRING(1000),
     allowNull: true,
     defaultValue: "https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA1L2pvYjk2My1iLTAxNl8zLWxodHk4Mmg2LmpwZw.jpg"
+  },
+  userId: {
+    type: DataTypes.STRING,
+    allowNull: false
   }
 })
 

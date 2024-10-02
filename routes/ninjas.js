@@ -10,11 +10,11 @@ import { Ninja } from "../models/ninja.js";
 export const ninjasRouter = Router()
 
 ninjasRouter.post("/ninjas", async (req, res) => {
-  const { nome, rank, aldeia, elemento, imgURL } = req.body
+  const { nome, rank, aldeia, elemento, imgURL, userId } = req.body
 
   try {
     await Ninja.create(
-       {nome, rank, aldeia, elemento, imgURL},
+       {nome, rank, aldeia, elemento, imgURL, userId},
        res.json({ message: "Ninja inserido com sucesso" })
     )
   } catch (err) {
@@ -25,8 +25,9 @@ ninjasRouter.post("/ninjas", async (req, res) => {
 
 ninjasRouter.get("/ninjas", async (req, res) => {
 
+  const { userId } = req.query
   const listaNinjas = await Ninja.findAll({
-    attributes: { exclude: ['createdAt', 'updatedAt' ] }
+    where: { userId }
   });
   res.json(listaNinjas)
 })

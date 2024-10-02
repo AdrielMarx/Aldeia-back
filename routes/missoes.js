@@ -5,20 +5,23 @@ import { Ninja } from "../models/ninja.js";
 export const missoesRouter = Router()
 
 missoesRouter.get("/missoes", async (req, res) => {
+
+  const { userId } = req.query
+
   const listaMissoes = await Missao.findAll({
-    attributes: { exclude: ['createdAt', 'updatedAt'] }
+    where: { userId }
   })
   
   res.json(listaMissoes)
 })
 
 missoesRouter.post("/missoes", async (req, res) => {
-  const { ninjaId, titulo, nivel, dataExecucao, desc } = req.body
+  const { ninjaId, titulo, nivel, dataExecucao, desc, userId } = req.body
 
   try {
     const ninja = await Ninja.findByPk(ninjaId)
     if (ninja) {
-      await Missao.create({ titulo, nivel,  dataExecucao, desc, ninjaId })
+      await Missao.create({ titulo, nivel,  dataExecucao, desc, ninjaId, userId })
       res.json({ message: "Missão criada." })
     }
     else {

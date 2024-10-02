@@ -16,5 +16,9 @@ export const Missao = connection.define("missao", {
   desc: {
     type: DataTypes.STRING(1000),
     allowNull: false
+  },
+  userId: {
+    type: DataTypes.STRING,
+    allowNull: false
   }
 })
